@@ -1,0 +1,59 @@
+ body{
+background-color:rgb(240, 240, 240);
+}
+h1{
+color:black;
+text-align: center;
+}
+
+
+
+table{
+width: 80%;
+height:70%;
+background-color:rgb(238, 130, 238);
+padding:50px;
+margin:auto;
+text-align: center;
+margin-top:3%;
+color:rgb(2,2,2);
+font-family:'Times New Roman',Times,serif;
+}
+th {
+  height: 70px;
+  }
+td {
+  text-align: center;
+}
+table, th, td {
+  border: 1px solid;
+}
+nav .logo p{
+margin-left:40%;
+font-size:30px;
+font-weight:bold;
+float:left;
+color:white;
+text-transform:uppercase;
+letter-spacing:1.5px;
+cursor:pointer;
+}
+nav ul{
+float:right;
+}
+nav li{
+display:inline;
+list-style:none;
+}
+nav li a{
+font-size:18px;
+text-transform:uppercase;
+padding:0px 30px;
+color:white;
+text-decoration:none;
+
+}
+nav li a:hover{
+color:#ff8c69;
+transition:all 0.4s ease 0s;
+}

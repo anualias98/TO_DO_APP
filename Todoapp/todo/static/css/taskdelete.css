@@ -1,0 +1,23 @@
+body{
+background-color:white;
+}
+.myform{
+width: 400px;
+height:300px;
+background: #ff9999;
+padding: 50px;
+margin:auto;
+align:center;
+margin-top:16%
+margin: 20px;
+text-align: center;
+margin-left:35%;
+font-family:'Times New Roman',Times,serif;
+}
+.btn{
+padding:10px;
+align:center;
+margin:auto;
+width:100px;
+color:red
+}
