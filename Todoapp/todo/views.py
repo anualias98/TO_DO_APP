@@ -1,11 +1,26 @@
 
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .forms import RegisterForm,LoginForm
-
+from ..Todoapp import settings
+from django.core.mail import send_mail
 from .models import Tasks,Register,Login
 # Create your views here.
+
+
+
+def  mail(request):
+    subject="Greetings"
+    msg="Congratulations for ur success"
+    to="anukalias98@gmail.com"
+    res=send_mail(subject,msg,settings.EMAIL_HOST_USER,[to])
+    if res==1:
+        msg="mail sent successfully"
+    else:
+        msg="Mail could not sent"
+    return HttpResponse(msg)
 
 class TaskList(ListView):
     model= Tasks
