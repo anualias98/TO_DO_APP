@@ -2,9 +2,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .forms import RegisterForm,LoginForm
-from ..Todoapp import settings
+from Todoapp import settings
 from django.core.mail import send_mail
 from .models import Tasks,Register,Login
 # Create your views here.
@@ -77,8 +78,11 @@ def login_fun(request):
         return redirect('/task-list/')
     context={'login':login,'form':form}
     return render(request,'login.html',context)
+class Index(View):
+    def get(self,request,*args,**kwargs):
+        return render(request,'home.html')
 
-# def home(request):
-#     template="home.html"
-#     context={}
-#     return render(request,template,context)
+def home(request):
+    template="home.html"
+    context={}
+    return render(request,template,context)

@@ -59,7 +59,7 @@
 
 .section-1{
     padding:40px;
-    background-image: url("https://ichef.bbci.co.uk/images/ic/1200xn/p06xjc88.jpg");
+    background-image: url("https://www.visiondesign.com/wp-content/uploads/to-do-list-background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -74,18 +74,32 @@
 
 h1{
     font-size: 100px;
-    color: black;
+    color: white;
 }
 .section-1 p{
     font-size: 20px;
-    color: black;
+    color: white;
+    img{
+    height: 300px;
+    width:250px;
+}
 
+.btn
+{
+    display: block;
+    border-radius: 5px;
+    color:white;
+    background-color: white;
+    font-size:20px;
+    text-decoration: none;
+    width:fit-content;
+    height:fit-content;
+    padding:5px;
+}
 
-
-
-
-
-
+.btn:hover{
+    background-color: cyan;
+}
 
     /* CSS for footer */
     .footer {
@@ -143,7 +157,7 @@ h1{
         <div class="Section-1-text">
             <center><h1>My Todo App</h1>
             <p>Customize your workflows</p>
-            <a href="{% url 'login' %}" class="btn">View Here  <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
+            <a href="{% url 'login' %}" class="btn">View Here<i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
 
         </center>
         </div>
