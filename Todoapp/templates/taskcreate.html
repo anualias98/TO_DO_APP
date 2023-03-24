@@ -7,19 +7,16 @@
     <title>Task_Create</title>
 </head>
 <body>
-<nav>
-    <div class="logo">
-        <h1>Task Create</h1>
-    </div>
-    <ul>
-        <li><a href="{% url 'task1' %}">Task List</a></li>
-    </ul>
-</nav>
+
+          <h3 align="center"><a href="{% url 'task1' %}">Task List</a></h3>
 <div class="frm">
+    <h1>Task Create</h1>
 <form method="post" class="myform">
     {% csrf_token %}
     {{form.as_p}}
+
     <input type="submit" value="Submit" class="btn">&nbsp&nbsp
+
 </form>
 </div>
 </body>

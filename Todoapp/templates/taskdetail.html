@@ -5,17 +5,14 @@
     <meta charset="UTF-8">
     <Link rel="stylesheet" href="{%static 'css/taskdetail.css'%}">
     <title>Title</title>
+
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="{% url 'task1' %}">Task List</a></li>
-    </ul>
-</nav>
-<br><br>
+
 <div class="frm">
     <div class="logo">
         <h1>Detail View</h1>
+        <h3 align="center"><a href="{% url 'task1' %}">Task List</a></h3>
     </div>
 <h2>Task:{{tasks.title}}</h2>
 <h3>Aim:{{tasks.Description}}</h3>

@@ -11,17 +11,9 @@
 <body>
     {% if request.user.is_authenticated %}
     <p>{{request.user}}</p>
-        <a href="{% url 'login' %}">Logout</a>
     {% else %}
     {% endif %}
-<nav>
-    <div class="logo">
-        <h1>My To Do List</h1>
-    </div>
-    <ul>
-        <li><a href="{% url 'task-create' %}">Add Task</a></li>
-    </ul>
-</nav>
+     <h1>My To Do List</h1>
 <table>
     <tr>
         <th>Tasks</th><th>Description</th><th>Completed</th><th>Time</th><th>View</th><th>Edit</th><th>Delete</th>
@@ -39,8 +31,8 @@
     </tr>
     {% endfor %}
     <h3 align="center"><button><a href="{% url 'task-create' %}">Add Task</a></button></h3>
+       <h4 align="center"><a href="{% url 'home' %}">Logout</a></h4>
 </table>
-    </main>
 </body>
 
 </html>
