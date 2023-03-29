@@ -1,24 +1,106 @@
-{%load static%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <Link rel="stylesheet" href="{%static 'css/login.css'%}">
+        <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/c08a1bc374.js" crossorigin="anonymous"></script>
+
     <title>Title</title>
 </head>
+<style>
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.login-page .form .login{
+  margin-top: -31px;
+margin-bottom: 26px;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-color: #328f8a;
+  background-image: linear-gradient(45deg,#328f8a,#08ac4b);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+  body {
+background:url('https://th.bing.com/th/id/R.2a6f56f4ab54b39397f1c9ff62932793?rik=FO4AuYMqXtKcVA&riu=http%3a%2f%2ftalenthub360.com%2fwp-content%2fuploads%2f2016%2f01%2fform-background-js.jpg&ehk=uyIoINc6wi8SftmbXZl2e%2b0bZWeGNA3hCMyHhj%2fpuLo%3d&risl=&pid=ImgRaw&r=0')no-repeat;background-size:cover;"
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+</style>
 <body>
 
-<div class="frm">
-    <div class="logo">
-<h1>Login</h1>
-    </div>
-
-<form method="POST">
-
+<div class="login-page">
+      <div class="form">
+        <div class="login">
+          <div class="login-header">
+            <h3>LOGIN</h3>
+          </div>
+        </div>
+<form method="POST" class="login-form">
   {% csrf_token %}
   {{form.as_p}}
-    <button type="submit" class="btn">Login</button>
- <p class="myp">Don't have account?<button type="submit" value="Register" class="btn1"><a href="{% url 'Register' %}">Register</a></button></p>
+    <div class="submit">
+          <button class="btn-primary" >Login</button>
+        </div>
+           <p>
+        Don't have an account?
+        <a href="{% url 'Register' %}">Create an account</a>.
+      </p>
 </form>
 </div>
 </body>
