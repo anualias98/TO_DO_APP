@@ -1,18 +1,6 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% load crispy_forms_tags %}
 <style>
-
-.login-page {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-.login-page .form .login{
+	.login-page .form .login{
   margin-top: -31px;
 margin-bottom: 26px;
 }
@@ -33,7 +21,7 @@ margin-bottom: 26px;
   width: 100%;
   border: 0;
   margin: 0 0 15px;
-  padding: 15px;
+  padding: 8px;
   box-sizing: border-box;
   font-size: 14px;
 }
@@ -68,31 +56,26 @@ margin-bottom: 26px;
   max-width: 300px;
   margin: 0 auto;
 }
-  body {
-background:url('https://th.bing.com/th/id/R.2a6f56f4ab54b39397f1c9ff62932793?rik=FO4AuYMqXtKcVA&riu=http%3a%2f%2ftalenthub360.com%2fwp-content%2fuploads%2f2016%2f01%2fform-background-js.jpg&ehk=uyIoINc6wi8SftmbXZl2e%2b0bZWeGNA3hCMyHhj%2fpuLo%3d&risl=&pid=ImgRaw&r=0')no-repeat;background-size:cover;"
+
+body {
+background:url('https://th.bing.com/th/id/R.2a6f56f4ab54b39397f1c9ff62932793?rik=FO4AuYMqXtKcVA&riu=http%3a%2f%2ftalenthub360.com%2fwp-content%2fuploads%2f2016%2f01%2fform-background-js.jpg&ehk=uyIoINc6wi8SftmbXZl2e%2b0bZWeGNA3hCMyHhj%2fpuLo%3d&risl=&pid=ImgRaw&r=0')no-repeat;background-size:cover;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-
-
 </style>
-<body>
+<!--Register-->
 <div class="login-page">
       <div class="form">
         <div class="login">
           <div class="login-header">
             <h3>REGISTER</h3>
+            <p>Please enter your credentials to login.</p>
           </div>
         </div>
-
-<form method="Post" class="login-form">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn">Save</button>
-    <p class="text-center">If you already have an account,<button type="submit" value="Register" class="btn1"> <a href="{% url 'login' %}">login</a></button></p>
-</form>
-</div>
-</body>
-</html>
+	<form method="POST"  class="login-form">
+		{% csrf_token %}
+		{{ register_form|crispy }}
+		<button style="text-decoration: none;">Register</button>
+          <p class="message">Not registered? <a href="{% url 'login' %}">Login</a></p>
+	</form>

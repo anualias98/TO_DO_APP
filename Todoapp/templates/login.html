@@ -1,16 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/c08a1bc374.js" crossorigin="anonymous"></script>
-
-    <title>Title</title>
-</head>
+{% load crispy_forms_tags %}
 <style>
-
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -73,35 +62,27 @@ margin-bottom: 26px;
   margin: 0 auto;
 }
   body {
-background:url('https://th.bing.com/th/id/R.2a6f56f4ab54b39397f1c9ff62932793?rik=FO4AuYMqXtKcVA&riu=http%3a%2f%2ftalenthub360.com%2fwp-content%2fuploads%2f2016%2f01%2fform-background-js.jpg&ehk=uyIoINc6wi8SftmbXZl2e%2b0bZWeGNA3hCMyHhj%2fpuLo%3d&risl=&pid=ImgRaw&r=0')no-repeat;background-size:cover;"
+background:url('https://th.bing.com/th/id/R.2a6f56f4ab54b39397f1c9ff62932793?rik=FO4AuYMqXtKcVA&riu=http%3a%2f%2ftalenthub360.com%2fwp-content%2fuploads%2f2016%2f01%2fform-background-js.jpg&ehk=uyIoINc6wi8SftmbXZl2e%2b0bZWeGNA3hCMyHhj%2fpuLo%3d&risl=&pid=ImgRaw&r=0')no-repeat;background-size:cover;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 </style>
-<body>
-
+<!--Login-->
 <div class="login-page">
       <div class="form">
         <div class="login">
           <div class="login-header">
             <h3>LOGIN</h3>
+            <p>Please enter your credentials to login.</p>
           </div>
         </div>
-<form method="POST" class="login-form">
-  {% csrf_token %}
-  {{form.as_p}}
-    <div class="submit">
-          <button class="btn-primary" >Login</button>
-        </div>
-           <p>
-        Don't have an account?
-        <a href="{% url 'Register' %}">Create an account</a>.
-      </p>
-</form>
+<div class="container py-5">
+  <form method="POST" class="login-form">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+   <button style="text-decoration: none;">Login</button>
+          <p class="message">Not registered? <a href="{% url 'Register' %}">Create an account</a></p>
+  </form>
 </div>
-</body>
-</html>

@@ -1,10 +1,12 @@
-
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from .forms import RegisterForm,LoginForm
+from .forms import  NewUserForm
 from Todoapp import settings
 from django.core.mail import send_mail
 from .models import Tasks,Register,Login
@@ -53,31 +55,37 @@ class TaskDetailView(DetailView):
     success_url=reverse_lazy('task1')
     template_name = 'taskdetail.html'
 
-
 def register_fun(request):
-    register=Register.objects.all()
-    form=RegisterForm()
-
-    if request.method=='POST':
-        form =RegisterForm(request.POST)
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
         if form.is_valid():
-            form.save()
-        return redirect('/login/')
-    context={'register':register,'form':form}
-    return render(request,'register.html',context)
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration Successful")
+            return redirect("login")
+        messages.error(request, "Unsuccessful registration.Invalid Information")
+    form = NewUserForm()
+    return render(request=request, template_name="register.html", context={"register_form": form})
 
 
 def login_fun(request):
-    login=Login.objects.all()
-    form=LoginForm()
-
-    if request.method=='POST':
-        form=LoginForm(request.POST)
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            form.save()
-        return redirect('/task-list/')
-    context={'login':login,'form':form}
-    return render(request,'login.html',context)
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                return redirect("/task-list/")
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    form = AuthenticationForm()
+    return render(request=request, template_name="login.html", context={"login_form": form})
+
 class Index(View):
     def get(self,request,*args,**kwargs):
         return render(request,'home.html')
