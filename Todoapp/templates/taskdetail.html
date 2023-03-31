@@ -1,21 +1,29 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <Link rel="stylesheet" href="{%static 'css/taskdetail.css'%}">
-    <title>Title</title>
-
+    <link rel="stylesheet" href="{% static 'css/taskdetail.css' %}">
+    <title>Task Details</title>
 </head>
-<body>
+<body style="background: url('https://wallpapercave.com/wp/wp7952670.jpg')no-repeat;">
 
-<div class="frm">
-    <div class="logo">
-        <h1>Detail View</h1>
-        <h3 align="center"><a href="{% url 'task1' %}">Task List</a></h3>
-    </div>
-<h2>Task:{{tasks.title}}</h2>
-<h3>Aim:{{tasks.Description}}</h3>
-</div>
+
+<center>
+    <h1>TASK DETAILS</h1>
+<form method="post" action="" class="myform">
+
+<h1 class="myh">{{tasks.title}}
+    </h1>
+    <center><span class="badge {% if tasks.completed %}badge-completed{% else %}badge-pending{% endif %}">
+        {% if tasks.completed %}Completed{% else %}Pending{% endif %}
+    </span>
+</center>
+    <br><br>
+<a href ="{% url 'task1' %}">Go Back</a>
+
+</form>
+    </center>
+
 </body>
 </html>
